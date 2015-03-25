@@ -1,0 +1,23 @@
+<h1>Event list</h1>
+
+<ul>
+<% @events.each do |e| %>
+
+  <li>
+    <%= e.name %>
+
+    <%= link_to "詳細", :controller => "events", :action => "show", :id => e %>
+
+    <%= link_to "編輯", :controller => "events", :action => "edit", :id => e %>
+
+    <%= link_to "刪除", :controller => "events", :action => "destroy", :id => e %>
+
+  </li>
+
+<% end %>
+</ul>
+
+<%= paginate @events %>
+
+
+<%= link_to "新增活動", :controller => "events", :action => "new" %>

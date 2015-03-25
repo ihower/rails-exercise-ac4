@@ -1,0 +1,17 @@
+
+<% if @event.errors.any? %>
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+<% end %>
+
+
+  <%= f.label :name, "名稱" %>
+  <%= f.text_field :name, :placeholder => "Event name" %>
+
+  <%= f.label :description, "內容" %>
+  <%= f.text_area :description %>
+
+  <%= f.submit "送出" %>

@@ -1,0 +1,9 @@
+<h1><%= @event.name %></h1>
+
+<p>
+
+  <%= simple_format( @event.description ) %>
+
+</p>
+
+<%= link_to "活動列表", :controller => "events", :action => "index" %>
