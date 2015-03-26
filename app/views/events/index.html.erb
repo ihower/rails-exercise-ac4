@@ -6,11 +6,11 @@
   <li>
     <%= e.name %>
 
-    <%= link_to "詳細", :controller => "events", :action => "show", :id => e %>
+    <%= link_to "詳細", event_path(e) %>
 
-    <%= link_to "編輯", :controller => "events", :action => "edit", :id => e %>
+    <%= link_to "編輯", edit_event_path(e) %>
 
-    <%= link_to "刪除", :controller => "events", :action => "destroy", :id => e %>
+    <%= link_to "刪除", event_path(e), :method => :delete %>
 
   </li>
 
@@ -20,4 +20,4 @@
 <%= paginate @events %>
 
 
-<%= link_to "新增活動", :controller => "events", :action => "new" %>
+<%= link_to "新增活動", new_event_path %>
