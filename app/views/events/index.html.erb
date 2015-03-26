@@ -10,7 +10,7 @@
 
     <%= link_to "編輯", edit_event_path(e) %>
 
-    <%= link_to "刪除", event_path(e), :method => :delete %>
+    <%= link_to "刪除", event_path(e), :data => { :confirm => "Are you sure?" } , :method => :delete %>
 
   </li>
 
@@ -19,5 +19,13 @@
 
 <%= paginate @events %>
 
-
 <%= link_to "新增活動", new_event_path %>
+
+
+<p>
+
+  <%= link_to "XML", events_path( :format => :xml) %>
+|
+  <%= link_to "JSON", events_path( :format => :json) %>
+
+</p>
