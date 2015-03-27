@@ -8,13 +8,30 @@
 </head>
 <body>
 
+<div id="main-container" class="container">
+
+   <div id="content" class="col-xs-12">
+
+        <div class="page-header">
+          <h1>Event System</h1>
+        </div>
+
 <% if flash[:notice] %>
-  <p style="color: green"><%= flash[:notice] %></p>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
 <% end %>
 
-<p style="color: red"><%= flash[:alert] %></p>
+<% if flash[:alert] %>
+      <div class="alert alert-warning">
+        <%= flash[:alert] %>
+      </div>
+<% end %>
 
 <%= yield %>
+
+</div>
+</div>
 
 </body>
 </html>

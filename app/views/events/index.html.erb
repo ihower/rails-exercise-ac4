@@ -1,26 +1,30 @@
 <h1>Event list</h1>
 
-<ul>
+
+<table class="table table-bordered">
 <% @events.each do |e| %>
 
-  <li>
-    <%= e.name %>
+  <tr>
+    <td><%= e.name %></td>
+    <td>
+    <%= link_to "詳細", event_path(e), :class => "btn btn-primary" %>
 
-    <%= link_to "詳細", event_path(e) %>
+    <%= link_to "編輯", edit_event_path(e), :class => "btn btn-default" %>
 
-    <%= link_to "編輯", edit_event_path(e) %>
-
-    <%= link_to "刪除", event_path(e), :data => { :confirm => "Are you sure?" } , :method => :delete %>
-
-  </li>
+    <%= link_to event_path(e), :data => { :confirm => "Are you sure?" } , :method => :delete, :class => "btn btn-danger" do %>
+      <%= icon("remove") %> 刪除
+    <% end %>
+    </td>
+  </tr>
 
 <% end %>
-</ul>
+</table>
 
 <%= paginate @events %>
 
-<%= link_to "新增活動", new_event_path %>
-
+<%= link_to new_event_path, :class => "btn btn-primary" do %>
+  <%= icon("plus") %> 新增活動
+<% end %>
 
 <p>
 
