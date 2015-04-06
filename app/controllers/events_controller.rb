@@ -12,6 +12,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.page( params[:page] ).per(3)
 
+    @event = Event.new
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @events.to_xml }
@@ -25,10 +27,6 @@ class EventsController < ApplicationController
     @title = @event.name
   end
 
-  # GET /events/new
-  def new
-    @event = Event.new
-  end
 
   # POST /events
   def create
@@ -40,7 +38,7 @@ class EventsController < ApplicationController
 
       redirect_to events_path
     else
-      render :action => :new
+      render :action => :idnex
     end
   end
 
@@ -76,7 +74,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description)
+    params.require(:event).permit(:name, :description, :status, :published_at, :due_date)
   end
 
 end

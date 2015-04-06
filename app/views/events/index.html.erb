@@ -1,5 +1,11 @@
 <h1>Event list</h1>
 
+<div id="event_form">
+<%= form_for @event, :url => events_path do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+<% end %>
+</div>
+
 
 <table class="table table-bordered">
 <% @events.each do |e| %>
@@ -22,14 +28,20 @@
 
 <%= paginate @events %>
 
-<%= link_to new_event_path, :class => "btn btn-primary" do %>
+<%= link_to "#", :id => "event-form-show", :class => "btn btn-primary" do %>
   <%= icon("plus") %> 新增活動
 <% end %>
 
 <p>
-
   <%= link_to "XML", events_path( :format => :xml) %>
 |
   <%= link_to "JSON", events_path( :format => :json) %>
-
 </p>
+
+<script>
+  $("#event_form").hide();
+
+  $("#event-form-show").click(function(){
+    $("#event_form").toggle();
+  })
+</script>
