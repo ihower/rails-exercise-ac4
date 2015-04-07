@@ -15,6 +15,9 @@
     <td>
     <%= link_to "詳細", event_path(e), :class => "btn btn-primary" %>
 
+ <%= link_to "報名者列表", event_attendees_path(e), :class => "btn btn-primary" %>
+
+
     <%= link_to "編輯", edit_event_path(e), :class => "btn btn-default" %>
 
     <%= link_to event_path(e), :data => { :confirm => "Are you sure?" } , :method => :delete, :class => "btn btn-danger" do %>

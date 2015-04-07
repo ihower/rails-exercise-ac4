@@ -8,7 +8,12 @@
 <p>
 
   <%= simple_format( @event.description ) %>
-
 </p>
+
+<h2>Attendee List</h2>
+
+<% @event.attendees.each do |a| %>
+  <p><%= a.name %></p>
+<% end %>
 
 <%= link_to "活動列表", events_path %>

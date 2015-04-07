@@ -1,0 +1,6 @@
+
+<%= form_for @attendee, :url => event_attendees_path(@event) do |f| %>
+
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+<% end %>
