@@ -12,6 +12,7 @@
 
   <tr>
     <td><%= e.name %></td>
+    <td><%= e.category.try(:name) %></td>
     <td>
     <%= link_to "詳細", event_path(e), :class => "btn btn-primary" %>
 
