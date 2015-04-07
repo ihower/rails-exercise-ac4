@@ -10,9 +10,17 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.page( params[:page] ).per(3)
+
+    if params[:category_id]
+      @category = Category.find( params[:category_id] )
+      @events = @category.events.page( params[:page] ).per(3)
+    else
+      @events = Event.page( params[:page] ).per(3)
+    end
 
     @event = Event.new
+
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb

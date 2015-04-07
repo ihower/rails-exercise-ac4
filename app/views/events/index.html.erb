@@ -6,6 +6,13 @@
 <% end %>
 </div>
 
+<p>
+<% @categories.each do |c| %>
+  <%= link_to c.name, events_path( :category_id => c.id ) %>
+<% end %>
+
+  <%= link_to "All", events_path %>
+</p>
 
 <table class="table table-bordered">
 <% @events.each do |e| %>
