@@ -5,6 +5,14 @@
 
 <p>狀態: <%= @event.status %></p>
 
+<p>分組:
+
+<%= @event.groups.map{ |g| g.name }.join(", ") %>
+
+
+</p>
+
+
 <p>
 
   <%= simple_format( @event.description ) %>
