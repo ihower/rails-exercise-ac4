@@ -10,4 +10,6 @@ class Event < ActiveRecord::Base
 
   has_many :groups, :through => :event_groupships
 
+  has_one :detail, :class_name => "EventDetail", :dependent => :destroy
+
 end
