@@ -1,0 +1,15 @@
+<h1><%= @event.name %></h1>
+
+<% if @detail %>
+
+  <p><%= @detail.information %></p>
+
+  <p><%= link_to "編輯", edit_event_detail_path(@event) %></p>
+  <p><%= link_to "刪除", event_detail_path(@event), :method => :delete %></p>
+
+<% else %>
+
+  <p>還沒有細節資料</p>
+  <p><%= link_to "新增細節", new_event_detail_path(@event) %></p>
+
+<% end %>

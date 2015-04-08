@@ -1,0 +1,6 @@
+<%= form_for @detail, :url => event_detail_path(@event) do |f| %>
+
+  <%= f.text_area :information %>
+  <%= f.submit %>
+
+<% end %>

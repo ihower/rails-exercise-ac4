@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :attendees
+
+    resource :detail, :controller => "event_details"
+
   end
 
   resources :people

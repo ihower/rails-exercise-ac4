@@ -1,6 +1,6 @@
 <h2>Edit event</h2>
 
-<%= form_for @event, :url => event_path(@event), :method => :patch do |f| %>
+<%= form_for build_event(@event), :url => event_path(@event), :method => :patch do |f| %>
 
   <%= render :partial => "form", :locals => { :f => f } %>
 

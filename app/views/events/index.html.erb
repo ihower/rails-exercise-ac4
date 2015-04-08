@@ -21,7 +21,11 @@
     <td><%= e.name %></td>
     <td><%= e.category.try(:name) %></td>
     <td>
-    <%= link_to "詳細", event_path(e), :class => "btn btn-primary" %>
+
+    <%= link_to "顯示", event_path(e), :class => "btn btn-primary" %>
+
+<%= link_to '詳細', event_detail_path(e), :class => "btn btn-primary" %>
+
 
  <%= link_to "報名者列表", event_attendees_path(e), :class => "btn btn-primary" %>
 

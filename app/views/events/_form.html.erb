@@ -45,6 +45,23 @@
   <%= f.date_select :due_date %>
 </div>
 
+<%= f.fields_for :detail do |f2| %>
+
+<div class="form-group">
+  <%= f2.label :information, "Information" %>
+  <%= f2.text_field :information %>
+
+  <% unless f2.object.new_record? %>
+    <%= f2.label :_destroy, 'Remove:' %>
+    <%= f2.check_box :_destroy %>
+  <% end %>
+
+
+</div>
+
+<% end %>
+
+
 <div class="form-group">
   <%= f.submit "送出", :class => "btn btn-primary" %>
 </div>
