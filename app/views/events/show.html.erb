@@ -1,7 +1,10 @@
 <h1><%= @event.name %></h1>
 
 <p>截止日期: <%= @event.due_date %></p>
+
 <p>發布時間: <%= @event.published_at.to_s(:short) %></p>
+
+<p>建立人: <%= @event.author_name %></p>
 
 <p>狀態: <%= @event.status %></p>
 
