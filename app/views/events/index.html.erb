@@ -54,7 +54,10 @@
 </p>
 
 <script>
-  $("#event_form").hide();
+
+  <% unless @event.errors.any? %>
+    $("#event_form").hide();
+  <% end %>
 
   $("#event-form-show").click(function(){
     $("#event_form").toggle();

@@ -13,16 +13,9 @@ class EventsController < ApplicationController
   # GET /events
   def index
 
-    if params[:category_id]
-      @category = Category.find( params[:category_id] )
-      @events = @category.events.page( params[:page] ).per(3)
-    else
-      @events = Event.page( params[:page] ).per(3)
-    end
+    load_events
 
     @event = Event.new
-
-    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +43,8 @@ class EventsController < ApplicationController
 
       redirect_to events_path
     else
-      render :action => :idnex
+      load_events
+      render :action => :index
     end
   end
 
@@ -80,6 +74,17 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def load_events
+    if params[:category_id]
+      @category = Category.find( params[:category_id] )
+      @events = @category.events.page( params[:page] ).per(3)
+    else
+      @events = Event.page( params[:page] ).per(3)
+    end
+
+    @categories = Category.all
+  end
 
   def set_event
     @event = Event.find( params[:id] )
