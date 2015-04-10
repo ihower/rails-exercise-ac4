@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
   before_action :authenticate_user!
 
-  before_action :set_event, :only => [:show, :edit, :update, :destroy]
+  before_action :set_event, :only => [:show, :edit, :update, :destroy, :dashboard]
 
   # URL Helpers:
   #   events_path
@@ -25,11 +25,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def latest
+    @event = Event.last
+  end
+
+  def popular
+  end
+
   # GET /events/123
   def show
     @title = @event.name
   end
 
+  def dashboard
+  end
 
   # POST /events
   def create
@@ -71,6 +80,28 @@ class EventsController < ApplicationController
     flash[:alert] = "Done 刪除!!"
 
     redirect_to events_path
+  end
+
+  def bulk_update
+    events = params[:ids].map{ |x| Event.find(x) }
+
+    events.each do |x|
+      if params["btn-delete"]
+        x.destroy
+      elsif params["btn-publish"]
+        x.update( :status => "published" )
+      end
+    end
+
+    redirect_to events_url
+  end
+
+  def bulk_delete
+    #Event.destroy_all
+    Event.first.destroy
+
+    flash[:alert] = "砍了!"
+    redirect_to events_url
   end
 
   private

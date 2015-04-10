@@ -3,8 +3,20 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :events do
-    resources :attendees
 
+    member do
+      get :dashboard
+    end
+
+    collection do
+      get :latest
+      get :popular
+
+      post :bulk_update
+      post :bulk_delete
+    end
+
+    resources :attendees
     resource :detail, :controller => "event_details"
 
   end
