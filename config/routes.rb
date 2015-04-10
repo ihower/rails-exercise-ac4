@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :admin do
+    resources :events
+  end
+
   resources :people
 
   get 'welcome/say_hello' => 'welcome#say'

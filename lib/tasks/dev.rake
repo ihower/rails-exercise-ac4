@@ -6,7 +6,7 @@ namespace :dev do
     User.delete_all
     Event.delete_all
 
-    User.create( :email => "ihower@gmail.com", :password => "12345678")
+    User.create( :email => "ihower@gmail.com", :password => "12345678", :role => "admin")
 
     100.times do |i|
       puts "Faking #{i}~~~~~ "

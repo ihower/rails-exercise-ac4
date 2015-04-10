@@ -1,0 +1,7 @@
+Admin: events list
+
+<% @events.each do |e| %>
+
+  <%= link_to e.name, admin_event_path(e) %>
+
+<% end %>

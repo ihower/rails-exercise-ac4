@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   has_many :events
 
+  def admin?
+    self.role == "admin"
+  end
+
   def display_name
     self.email.split("@").first
   end
