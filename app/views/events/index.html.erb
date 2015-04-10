@@ -6,17 +6,26 @@
 <% end %>
 </div>
 
+<%= form_tag events_path, :method => :get do %>
+    <%= text_field_tag "keyword" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <p>
-
 <%= link_to "Latest", latest_events_path %>
-
 <%= link_to "Popular", popular_events_path %>
+</p>
+
+<p>
+  Order by: <%= link_to "最新遞降", events_path( merge_event_filters(params, :order => "created_at_desc") ) %> |
+
+  <%= link_to "最新遞增", events_path( merge_event_filters(params, :order => "") ) %>
 
 </p>
 
 <p>
 <% @categories.each do |c| %>
-  <%= link_to c.name, events_path( :category_id => c.id ) %>
+  <%= link_to c.name, events_path( merge_event_filters(params, :category_id => c.id) ) %>
 <% end %>
 
   <%= link_to "All", events_path %>

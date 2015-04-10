@@ -114,6 +114,15 @@ class EventsController < ApplicationController
       @events = Event.page( params[:page] ).per(3)
     end
 
+    if params[:order] == "created_at_desc"
+      @events = @events.order("created_at DESC")
+    end
+
+    if params[:keyword]
+      @events = @events.where( [ "name like ?", "%#{params[:keyword]}%" ] )
+    end
+
+
     @categories = Category.all
   end
 
