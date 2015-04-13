@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   end
 
   def latest
-    @event = Event.last
+    @events = Event.order("id DESC").limit(3)
   end
 
   def popular
