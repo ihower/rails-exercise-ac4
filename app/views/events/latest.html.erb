@@ -3,10 +3,11 @@
     $(".desc").hide();
 
     $("a").click(function(){
-      $(".desc").toggle();
       var div = $(this).parent()
       var h2 = div.find("h2");
       var event_name = div.data("ename");
+
+      div.find(".desc").toggle();
 
       h2.toggleClass("highlight");
 
