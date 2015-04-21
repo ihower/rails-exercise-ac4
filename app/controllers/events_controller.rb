@@ -130,7 +130,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :_destory_logo, :description, :status, :published_at, :due_date, :category_id, :logo, :detail_attributes => [:information, :_destroy, :id], :group_ids => [] )
+    params.require(:event).permit(:name, :tag_list, :_destory_logo, :description, :status, :published_at, :due_date, :category_id, :logo, :detail_attributes => [:information, :_destroy, :id], :group_ids => [] )
   end
 
 end

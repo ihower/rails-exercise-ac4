@@ -22,6 +22,22 @@ class Event < ActiveRecord::Base
 
   before_validation :remove_logo
 
+  has_many :taggings
+  has_many :tags, :through => :taggings
+
+  def tag_list
+    self.tags.map{ |t| t.name }.join(",")
+  end
+
+  def tag_list=(value)
+    tags = value.split(",").map { |tag_name|
+      tag_name = tag_name.strip
+      Tag.find_by_name(tag_name) || Tag.create( :name => tag_name)
+    }
+
+    self.tag_ids = tags.map{ |x| x.id }
+  end
+
   def author_name
     if user
       user.display_name
