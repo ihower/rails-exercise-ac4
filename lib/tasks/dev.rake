@@ -1,5 +1,32 @@
 namespace :dev do
 
+  task :test_update_all => :environment do
+
+    ids = Event.pluck(:id)
+    puts ids.count
+
+    Benchmark.bm do |x|
+      x.report {
+        # 86 * 2 queries
+        ids.each do |i|
+          event = Event.find(i)
+          event.update( :capacity => 200 )
+        end
+      }
+      x.report {
+        # 86
+        ids.each do |i|
+          Event.where( :id => i ).update_all( :capacity => 200 )
+        end
+      }
+      x.report {
+        # 1
+        Event.where( :id => ids ).update_all( :capacity => 200 )
+      }
+    end
+
+  end
+
   task :fake => :environment do
     puts "Fake!!"
 
