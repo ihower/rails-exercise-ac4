@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  attr_accessor :_destory_logo
+
   validates_presence_of :name
 
   belongs_to :user
@@ -18,11 +20,19 @@ class Event < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
+  before_validation :remove_logo
+
   def author_name
     if user
       user.display_name
     else
       "Nobody"
+    end
+  end
+
+  def remove_logo
+    if self._destory_logo
+      self.logo = nil
     end
   end
 
