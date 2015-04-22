@@ -49,7 +49,11 @@
   <%= f.label :logo, "LOGO檔案" %>
   <%= f.file_field :logo %>
 
-  <%= f.check_box :_destory_logo %> 移除照片
+  <%#= f.check_box :_destory_logo %>
+
+  <%= check_box_tag "event[_destroy_logo]" %>
+
+  移除照片
 
 </div>
 
