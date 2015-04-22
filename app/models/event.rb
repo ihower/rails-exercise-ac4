@@ -4,7 +4,9 @@ class Event < ActiveRecord::Base
 
   STATUS = ["published", "draft"]
 
-  validates_presence_of :name
+  validates_presence_of :name, :friendly_id
+
+  validates_uniqueness_of :friendly_id
 
   belongs_to :user
   belongs_to :category
@@ -22,10 +24,16 @@ class Event < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
+  before_validation :setup_friendly_id
+
   before_validation :remove_logo
 
   has_many :taggings
   has_many :tags, :through => :taggings
+
+  def to_param
+    self.friendly_id
+  end
 
   def tag_list
     self.tags.map{ |t| t.name }.join(",")
@@ -52,6 +60,10 @@ class Event < ActiveRecord::Base
     if self._destory_logo
       self.logo = nil
     end
+  end
+
+  def setup_friendly_id
+    self.friendly_id ||= SecureRandom.hex(8)
   end
 
 end
