@@ -1,5 +1,13 @@
+
+<%= I18n.locale %>
+
+<hr>
+
 <p>Hola! It's <%= Time.now %></p>
 
+<%= t(:hello_world) %>
+
+<%= t("hello", :name => "ihower") %>
 
 <%= link_to "Say Hello", welcome_say_hello_path %>
 

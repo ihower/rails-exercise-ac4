@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
 
   attr_accessor :_destory_logo
 
+  STATUS = ["published", "draft"]
+
   validates_presence_of :name
 
   belongs_to :user
@@ -42,7 +44,7 @@ class Event < ActiveRecord::Base
     if user
       user.display_name
     else
-      "Nobody"
+      I18n.t("nobody")
     end
   end
 

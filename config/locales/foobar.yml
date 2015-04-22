@@ -1,0 +1,16 @@
+"zh-TW":
+  hello: "親愛的%{name}你好!"
+  hello-world: 哈囉
+  create_successful: 新增成功
+  nobody: 沒有人
+  admin:
+    event: 後台活動管理
+  event:
+    draft: 草稿
+    published: 公開
+
+  activerecord:
+    attributes:
+      event:
+        name: "活動名稱"
+        description: "描述"

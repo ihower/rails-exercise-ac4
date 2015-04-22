@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello: %{name}"
+  hello-world: Hi
+  create_successful: Create Successful
+  nobody: Nobody
+  admin:
+    event: Event Admin
+  event:
+    draft: Draft
+    published: Published
+
+  activerecord:
+    attributes:
+      event:
+        name: Event Name
+        description: Description
+

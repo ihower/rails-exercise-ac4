@@ -5,7 +5,10 @@ module ApplicationHelper
   end
 
   def event_status_options
-    [ ["發布","published"], ["草稿", "draft"] ]
+    # [ ["發布","published"], ["草稿", "draft"] ]
+
+    Event::STATUS.map{ |s| [ t(s, :scope => "event"), s] }
+    #Event::STATUS.map{ |s| [ t( "event.#{s}" ), s] }
   end
 
 end

@@ -6,6 +6,8 @@ gem 'rails', '4.2.1'
 gem 'pg'
 gem 'rails_12factor', group: :production
 
+gem "rails-i18n"
+
 gem "paperclip"
 
 # Use SCSS for stylesheets

@@ -48,7 +48,7 @@ class EventsController < ApplicationController
 
     if @event.save
 
-      flash[:notice] = "新增成功"
+      flash[:notice] = I18n.t("create_successful")
 
       redirect_to events_path
     else
