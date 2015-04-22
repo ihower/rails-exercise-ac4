@@ -63,7 +63,9 @@ class Event < ActiveRecord::Base
   end
 
   def setup_friendly_id
-    self.friendly_id ||= SecureRandom.hex(8)
+    if self.friendly_id.blank?
+     self.friendly_id = SecureRandom.hex(8)
+    end
   end
 
 end
