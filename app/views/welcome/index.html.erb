@@ -11,4 +11,21 @@
 
 <%= link_to "Say Hello", welcome_say_hello_path %>
 
+<hr>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id="model-content" class="modal-content">
+
+      <%= render "first_step" %>
+
+    </div>
+  </div>
+</div>
 

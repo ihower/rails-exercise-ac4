@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
   get 'welcome' => 'welcome#index'
 
+  post 'next_step' => 'welcome#next_step', :as => :next_step
+  post 'final_step' => 'welcome#final_step', :as => :final_step
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

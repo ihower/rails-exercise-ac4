@@ -1,0 +1,8 @@
+$('#myModal').modal("hide");
+
+// reset modal to first step after 0.5s
+setTimeout(function(){
+  var content = "<%= j( render :partial => 'first_step' ) %>";
+  $("#model-content").html(content);
+}, 500)
+
