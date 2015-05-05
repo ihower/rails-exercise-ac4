@@ -19,7 +19,8 @@
 
 <div class="form-group">
   <%= f.label :tag_list, "標籤" %>
-  <%= f.text_field :tag_list, :placeholder => "tag1, tag2", :class=> "form-control" %>
+  <%= f.text_field :tag_list, :placeholder => "tag1, tag2", :class=> "form-control", :id => "tagging-list" %>
+
 </div>
 
 <div class="form-group">
@@ -32,7 +33,10 @@
 
 <div class="form-group">
   <%= f.label :group_ids, "分組" %>
-  <%= f.collection_check_boxes(:group_ids, Group.all, :id, :name) %>
+  <%#= f.collection_check_boxes(::group_ids, Group.all, :id, :name) %>
+
+  <%= f.select :group_ids, Group.all.map{ |g| [g.name, g.id] }, {}, :multiple => true, :id => "multiple-group-select", :class=> "form-control" %>
+
 </div>
 
 <div class="form-group">
@@ -83,7 +87,17 @@
 
 <% end %>
 
-
 <div class="form-group">
   <%= f.submit "送出", :class => "btn btn-primary" %>
 </div>
+
+<script>
+
+  $("#multiple-group-select").select2();
+
+  $("#tagging-list").select2({
+    tags: <%= raw(Tag.pluck(:name).to_json) %>,
+    tokenSeparators: [',', ' ']
+  });
+
+</script>
