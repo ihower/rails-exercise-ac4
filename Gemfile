@@ -11,6 +11,7 @@ gem "rails-i18n"
 gem "paperclip"
 
 gem "select2-rails"
+gem "gon"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

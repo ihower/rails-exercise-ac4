@@ -18,6 +18,8 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.setup_friendly_id
 
+    load_gon_tags
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @events.to_xml }
@@ -28,6 +30,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    load_gon_tags
   end
 
   def latest
@@ -58,12 +61,14 @@ class EventsController < ApplicationController
       redirect_to events_path
     else
       load_events
+      load_gon_tags
       render :action => :index
     end
   end
 
   # GET /events/123/edit
   def edit
+    load_gon_tags
   end
 
   # PATCH /events/123
@@ -74,6 +79,7 @@ class EventsController < ApplicationController
 
       redirect_to events_path
     else
+      load_gon_tags
       render :action => :edit
     end
   end
@@ -136,6 +142,10 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :tag_list, :_destory_logo, :description, :friendly_id, :status, :published_at, :due_date, :category_id, :logo, :detail_attributes => [:information, :_destroy, :id], :group_ids => [] )
+  end
+
+  def load_gon_tags
+    gon.tags = Tag.pluck(:name)
   end
 
 end

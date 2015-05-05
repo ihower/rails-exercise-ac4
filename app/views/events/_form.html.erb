@@ -91,12 +91,13 @@
   <%= f.submit "送出", :class => "btn btn-primary" %>
 </div>
 
+<%= Gon::Base.render_data({}) %>
 <script>
 
   $("#multiple-group-select").select2();
 
   $("#tagging-list").select2({
-    tags: <%= raw(Tag.pluck(:name).to_json) %>,
+    tags: gon.tags,
     tokenSeparators: [',', ' ']
   });
 
