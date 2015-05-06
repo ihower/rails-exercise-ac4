@@ -68,7 +68,10 @@
 
 <div class="form-group">
   <%= f.label :due_date, "截止日期" %>
-  <%= f.date_select :due_date %>
+  <%#= f.date_select :due_date %>
+
+  <%= f.text_field :due_date, :class => "datepicker" %>
+
 </div>
 
 <%= f.fields_for :detail do |f2| %>
@@ -93,6 +96,11 @@
 
 <%= Gon::Base.render_data({}) %>
 <script>
+
+  $('.datepicker').datepicker({
+     format: "yyyy/mm/dd"
+  });
+
 
   $("#multiple-group-select").select2();
 
